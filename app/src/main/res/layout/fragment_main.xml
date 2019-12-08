@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.lottonumbergenerator.viewmodel.LottoViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:clickable="true"
+        android:focusable="true"
+        >
+        <TextView
+            android:id="@+id/tv_odrder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="20dp"
+            android:includeFontPadding="false"
+            android:text="회차: "
+            android:textColor="#072c56"
+            android:textSize="20sp"
+            />
+
+        <EditText
+            android:id="@+id/et_odrder"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="56dp"
+            android:layout_marginEnd="22dp"
+            android:includeFontPadding="false"
+            android:textColor="#072c56"
+            android:textSize="18sp"
+            android:inputType="numberDecimal"
+            android:text="@={viewModel.order}"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tv_odrder"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_odrder"
+            />
+
+        <TextView
+            android:id="@+id/tv_generated_number_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_odrder"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="30dp"
+            android:includeFontPadding="false"
+            android:text="로또 생성번호: "
+            android:textColor="#072c56"
+            android:textSize="20sp"
+            />
+
+        <TextView
+            android:id="@+id/tv_generated_number"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@+id/tv_generated_number_comment"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_generated_number_comment"
+            android:layout_marginEnd="22dp"
+            android:layout_marginTop="10dp"
+            android:includeFontPadding="false"
+            android:textColor="#072c56"
+            android:textSize="24sp"
+            android:text="@={viewModel.expectedWinNumber}"
+            />
+
+        <Button
+            android:id="@+id/btn_number_generator"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            app:layout_constraintStart_toStartOf="@+id/tv_generated_number_comment"
+            app:layout_constraintTop_toBottomOf="@+id/tv_generated_number"
+            android:layout_marginTop="16dp"
+            android:includeFontPadding="false"
+            android:text="로또번호 생성"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="18sp"
+            android:onClick="@{() -> viewModel.onGenerate()}"
+            />
+
+        <Button
+            android:id="@+id/btn_winnumber_inquiry"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="12dp"
+            app:layout_constraintStart_toEndOf="@+id/btn_number_generator"
+            app:layout_constraintTop_toBottomOf="@+id/tv_generated_number_comment"
+            app:layout_constraintBaseline_toBaselineOf="@+id/btn_number_generator"
+            android:includeFontPadding="false"
+            android:text="생성번호 당첨조회"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="18sp"
+            android:onClick="@{() -> viewModel.onLookupWinNumber()}"
+            />
+
+        <Button
+            android:id="@+id/btn_previous_number_inquiry"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_number_generator"
+            android:layout_marginStart="22dp"
+            android:layout_marginEnd="22dp"
+            android:layout_marginTop="16dp"
+            android:includeFontPadding="false"
+            android:text="지난회차 이력조회"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="18sp"
+            android:onClick="@{() -> viewModel.onShowPreviousWinNumber()}"
+            />
+
+        <Button
+            android:id="@+id/btn_frequent_number"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_previous_number_inquiry"
+            android:layout_marginStart="22dp"
+            android:layout_marginEnd="22dp"
+            android:layout_marginTop="16dp"
+            android:includeFontPadding="false"
+            android:text="많이 출현 번호 조회"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="18sp"
+            android:onClick="@{() -> viewModel.onShowFrequentNumbers()}"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

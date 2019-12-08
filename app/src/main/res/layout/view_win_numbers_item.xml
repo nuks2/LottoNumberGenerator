@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:orientation="horizontal"
+    >
+    <TextView
+        android:id="@+id/tv_order"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.2"
+        android:includeFontPadding="false"
+        android:textColor="#072c56"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:background="@android:color/background_light"
+        />
+
+    <TextView
+        android:id="@+id/tv_win_numbers"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.9"
+        android:layout_marginStart="10dp"
+        android:includeFontPadding="false"
+        android:textColor="#072c56"
+        android:textSize="18sp"
+        android:background="@android:color/background_light"
+        />
+</LinearLayout>
